@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<div class="mx-auto col-xs-12 col-md-6">
+    <form method="POST" action="">
+        {{ form.hidden_tag() }} <!-- csrf token -->
+        <fieldset class="form-group">
+            <legend class="py-3">
+                <h2 class="text-justify">Feeling the squeeze already?</h2>
+            </legend>
+            <p class="text-justify">See how much the cost of a weekly shopping basket will increase if Brexit goes ahead.</p>
+            <br>
+            <p class="text-justify">Enter a couple of details to see how Brexit could affect  your household.</p>
+            <br>
+            <div class="form-group">
+                {{ form.postcode.label(class="form-control-label") }}
+                {% if form.postcode.errors %}
+                        {{ form.postcode(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.postcode.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.postcode(class="form-control form-control-lg ") }}
+                    {% endif %}
+
+                {{ form.household.label(class="form-control-label") }}
+                {% if form.household.errors %}
+                        {{ form.household(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.household.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.household(class="form-control form-control-lg ") }}
+                    {% endif %}
+
+            </div>
+        </fieldset>
+        <div class="form-group">
+            {{ form.submit(class="btn btn-info btn-block") }}
+        </div>
+
+    </form>
+
+</div>
+{% endblock content %}
